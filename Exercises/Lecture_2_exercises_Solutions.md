@@ -19,9 +19,9 @@ a) $w(t) = 5\cos(10\pi t)$
 
 b) $w(t) = A\text{rect}(t/T)$
 - This is a pulse of finite duration $T$ and constant amplitude $A$.
-- Energy: $E = \int_{-T/2}^{T/2} A^2 dt = A^2 T$ (finite).
+- Energy: $E = \lim_{\mathcal{T} \to \infty} \int_{-\mathcal{T}/2}^{\mathcal{T}/2} w^2(t) dt = \int_{-T/2}^{T/2} A^2 dt = A^2 \left[ t \right]_{-T/2}^{T/2} = A^2(T/2 - (-T/2)) = A^2 T$ (finite).
 - Power: $P = \lim_{\mathcal{T} \to \infty} \frac{1}{\mathcal{T}} \int_{-\mathcal{T}/2}^{\mathcal{T}/2} w^2(t) dt = \lim_{\mathcal{T} \to \infty} \frac{A^2 T}{\mathcal{T}} = 0$.
-- **Result:** Energy Signal.
+- **Result:** Energy Signal with Total Energy $E = A^2 T$.
 
 c) $w(t) = e^{2t}u(t)$
 - This signal grows exponentially to infinity as $t \to \infty$.
@@ -130,6 +130,32 @@ $$R_w(\tau) = N_0 B \frac{\sin(2\pi B\tau)}{2\pi B\tau} = N_0 B \text{sinc}(2B\t
 
 ---
 
+### Solution 2.4 (Advanced)
+
+**Given:** $w(t) = A e^{j\omega_0 t}$
+
+**Solution:**
+First, find the truncated waveform $w_T(t)$ over $[-T/2, T/2]$:
+$$w_T(t) = A e^{j\omega_0 t} \text{rect}(t/T)$$
+
+Next, find its Fourier transform $W_T(f)$:
+$$W_T(f) = \mathcal{F}[A e^{j\omega_0 t} \text{rect}(t/T)]$$
+Using the frequency shifting property $\mathcal{F}[x(t)e^{j2\pi f_0 t}] = X(f - f_0)$ and $\mathcal{F}[\text{rect}(t/T)] = T\text{sinc}(fT)$:
+$$W_T(f) = A T \text{sinc}((f - f_0)T)$$
+where $\omega_0 = 2\pi f_0$.
+
+Now, calculate $|W_T(f)|^2$:
+$$|W_T(f)|^2 = A^2 T^2 \text{sinc}^2((f - f_0)T)$$
+
+Finally, apply the limit definition for PSD:
+$$\mathcal{P}_w(f) = \lim_{T \to \infty} \frac{1}{T} |W_T(f)|^2 = \lim_{T \to \infty} \frac{1}{T} A^2 T^2 \text{sinc}^2((f - f_0)T) = \lim_{T \to \infty} A^2 T \text{sinc}^2((f - f_0)T)$$
+Using the property $\lim_{T \to \infty} T\text{sinc}^2(fT) = \delta(f)$:
+$$\mathcal{P}_w(f) = A^2 \delta(f - f_0)$$
+
+*(Note: For a real sinusoid $A\cos(\omega_0 t)$, the PSD would be $\frac{A^2}{4}[\delta(f-f_0) + \delta(f+f_0)]$. Here we used a complex exponential).*
+
+---
+
 ## Exercise Set 3: Conceptual and Derivations
 
 ### Solution 3.1 (Challenge)
@@ -162,6 +188,49 @@ Combining these:
 $$-R_w(0) \le R_w(\tau) \le R_w(0)$$
 $$|R_w(\tau)| \le R_w(0)$$
 $$R_w(0) \ge |R_w(\tau)| \quad \square$$
+
+---
+
+### Solution 3.2 (Challenge)
+
+**Prove:** $R_w(\tau) = R_w(-\tau)$ for a real power waveform.
+
+**Proof:**
+By definition:
+$$R_w(\tau) = \langle w(t)w(t+\tau) \rangle = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} w(t)w(t+\tau) dt$$
+
+Let's evaluate $R_w(-\tau)$:
+$$R_w(-\tau) = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} w(t)w(t-\tau) dt$$
+
+Substitute $t' = t - \tau$, which means $t = t' + \tau$ and $dt = dt'$:
+As $T \to \infty$, the shift $\tau$ becomes negligible compared to the integration limits.
+$$R_w(-\tau) = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2-\tau}^{T/2-\tau} w(t'+\tau)w(t') dt'$$
+
+Since the limit is over an infinite interval, shifting the bounds by a finite $\tau$ does not change the result:
+$$R_w(-\tau) = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} w(t')w(t'+\tau) dt' = \langle w(t)w(t+\tau) \rangle$$
+
+Thus:
+$$R_w(-\tau) = R_w(\tau) \quad \square$$
+
+---
+
+### Solution 3.3 (Challenge)
+
+**Prove:** If $w(t) = w(t+T_0)$, then $R_w(\tau) = R_w(\tau+T_0)$.
+
+**Proof:**
+By definition, for a periodic signal:
+$$R_w(\tau) = \frac{1}{T_0} \int_{T_0} w(t)w(t+\tau) dt$$
+
+Let's evaluate $R_w(\tau + T_0)$:
+$$R_w(\tau + T_0) = \frac{1}{T_0} \int_{T_0} w(t)w(t+\tau+T_0) dt$$
+
+Since $w(t)$ is periodic with period $T_0$, we know that $w(t+\tau+T_0) = w(t+\tau)$.
+Substituting this into the integral:
+$$R_w(\tau + T_0) = \frac{1}{T_0} \int_{T_0} w(t)w(t+\tau) dt$$
+
+This is exactly the definition of $R_w(\tau)$:
+$$R_w(\tau + T_0) = R_w(\tau) \quad \square$$
 
 ---
 *Generated for Lecture 2 - Power Spectral Density*
