@@ -1,0 +1,29 @@
+Now we will detector circuits 
+basically pick and choose form the signals
+
+first we have Envelope detector
+it extracts R(t) from a bandpass signal
+also has a check condition if the signals is distorted
+
+RC envelope detector: cool shit, check equation
+
+Next we have product detector
+Mixer followed by a lowpass filter
+used to extract phase for AM or PM
+
+
+Lastly FM slope detector
+This is a very primitive FM demodulator.
+
+Modern receivers use quadrature detectors or PLLs (PLL skipped for your exam).
+
+
+✔ Non-coherent detectors
+
+Do NOT need carrier phase reference.
+
+✔ Coherent detectors
+
+Require synchronized oscillator.
+
+

@@ -1,0 +1,30 @@
+First we have a limitter which basically a voltage clipper 
+if voltage above 0 product a constant positive value
+less than 0 smae shit
+
+Used for PMs and FMs and signals that use angle modulation since we dont give a shit about amplitude
+and noise fucks ampliture the most we we fuck noise with this shit.
+
+
+Bandpass Limitter:
+Square wave limitter + a bandpass filter
+we use limitter to shit on R(t) which contains amplitude 
+Then we use the bandpass so make only keep harmonics thus making our signal sinusoidal which is nice for calculations
+
+AM is fucked
+PM  and FM are good.
+
+
+Mixers ( the good shit ):
+Basically it multiplies the inputs signal by a sine wave from a local osccillator
+lots of math
+Basically we shift the signal to 2 ranges down and up ( fc - f0 ) and (fc + f0 )
+
+The envelope stays good ( g(t) ) only the carrier freq is fucked 
+
+Ultimaely take a fucken signal and shift thaat motherfucking spectrum to a new frequency
+
+Lastly, Frequency multipliers:
+also way to much math
+ultimateley freq is multiplier and phase modulation is multiplied 
+amplitude modulation is fucked too 

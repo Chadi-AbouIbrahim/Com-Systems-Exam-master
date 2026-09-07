@@ -1,0 +1,16 @@
+So basically we are aiing to represent a complex bandpass signal centered around fc as a simple baseband signal from 0 to B
+this helps us in modulation later
+
+with this instead of processing original signal at high frequencies 
+we process the complex envelope g(t) which is a simple baseband from 0-B Hz
+
+we have 4 represenations:
+complex
+polar
+In-phase
+
+g(t) = x(t) + j.y(t)
+
+we can also find the spectrum of the bandpass signal using the g(t) which is much simpler
+we can also find the power of the bandpass signal using g(t)
+and the Peak Envelope Power

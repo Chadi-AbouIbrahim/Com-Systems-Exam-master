@@ -1,0 +1,47 @@
+Supre Heterodyne recievers
+Shitty ass long name
+
+Uses a mixer, changes RF signals to IF 
+Antenna → RF Filter → RF Amplifier → Mixer → IF Filter → Detector
+
+we do this shitty thing since we need super high selective and sensitive filters which is more achievable using low frequencies thus IF
+
+frequency conversion: shitty ass math
+
+these revievers have high sensitivity, high selectivity and consitant ass performance
+
+find the image fucken frequency definitely coming in exam
+ also math
+
+IF needs to be not too small nor too large 
+
+✔ RF Filter
+
+Rejects image frequency as much as possible.
+
+✔ RF Amplifier
+
+Boosts the desired signal before mixing.
+
+✔ Mixer
+
+Down-converts the RF to IF.
+
+✔ IF Filter
+
+Provides:
+
+high selectivity
+
+narrow bandwidth
+
+constant response
+
+✔ Detector
+
+Envelope detector for AM
+
+FM detector for FM
+
+Product detector for DSB-SC/SSB
+

@@ -1,0 +1,23 @@
+Building on Lecture 13 and basically he opposite of lecture 17 or the completing side
+Here we have the Angle Modulation (FM + PM) 
+
+Here we will be using the phase of g(t) not the amplitude
+Our information is carried in 
+we have a general complex form
+
+we have 2 types:
+FM or PM
+
+PM is where the phase is directly proportional to the message m(t)
+FM is where the frequency deviation to the message
+	
+Here we can:
+derive instanouse frequency, and instantanous deviation frequency for both FM and PM
+
+we define a Modulation Index Beta for PM and FM 
+
+we can also implement the Bessel Function Expansion to find the FM/PM Spectra
+
+we use Carson's rule to calculate the FM bandwidth Approximation
+
+Finally a comparison between FM and PM 

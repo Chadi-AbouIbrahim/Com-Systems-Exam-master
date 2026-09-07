@@ -1,0 +1,24 @@
+so basically we are fowoling lecture 13
+For AM ( Amplitude Modulation ) we have a new g(t) (Complex Envelope):
+basically we are customizing g(t)
+
+For Am:
+R(t) is define check definition.
+but Q(t) = 0 --> we can not restore info using the phase, only amplitude
+
+For AM:
+we can calcualte Amax and Amin from R(t)
+
+we then can find:
+Modulation Percentage: modulation index
+
+we can use envelope detection formulas to check signal crossing and thus distortion
+
+we can calculate Power, Efficeincy, and spectrum
+
+we can do DSB-SC ( Double Sideband Supressed Carrier ), basically AM without a carrier, different spectrum 
+check comparison with regular
+
+we can perform product detection, apply formula
+
+we can use SSB (Single Side Band) or basically transmitting only one side of AM signal
