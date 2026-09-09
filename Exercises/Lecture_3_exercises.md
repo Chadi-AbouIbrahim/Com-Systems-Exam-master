@@ -10,7 +10,9 @@ These exercises cover the concepts from Lecture 3: Orthogonal Functions, Fourier
 Determine if the functions $\phi_1(t) = \cos(2\pi t)$ and $\phi_2(t) = \sin(2\pi t)$ are orthogonal over the interval $[0, 1]$. What is the value of the constant $K_1$ for $\phi_1(t)$?
 
 ### Exercise 1.2 (Intermediate)
-A periodic signal $w(t)$ has a fundamental period $T_0 = 4$ seconds. It can be represented by a Fourier series. If $w(t)$ is real and even, and it is known that $c_1 = 3 + j0$ and $c_2 = 2$, determine the values of $c_{-1}$ and the phase of $c_2$.
+A periodic signal $w(t)$ has a fundamental period $T_0 = 4$ seconds. It can be represented by a Fourier series. If $w(t)$ is real and even, and it is known that:
+$$ c_1 = 3 + j0 \quad \text{and} \quad c_2 = 2 $$
+determine the values of $c_{-1}$ and the phase of $c_2$.
 
 ### Exercise 1.3 (Advanced)
 A signal $w(t)$ is defined over $[-T/2, T/2]$ as $w(t) = A$ for $|t| \leq \tau/2$ and $w(t) = 0$ elsewhere ($\tau < T$). 
@@ -21,7 +23,8 @@ Find the Fourier series coefficients $c_n$ if we represent $w(t)$ periodically w
 ## Exercise Set 2: PSD of Periodic Waveforms
 
 ### Exercise 2.1 (Basic)
-A periodic signal $w(t)$ has the following non-zero Fourier coefficients: $c_0 = 5$, $c_1 = 3 - 4j$, $c_{-1} = 3 + 4j$, $c_2 = 2j$, $c_{-2} = -2j$.
+A periodic signal $w(t)$ has the following non-zero Fourier coefficients:
+$$ c_0 = 5, \quad c_1 = 3 - 4j, \quad c_{-1} = 3 + 4j, \quad c_2 = 2j, \quad c_{-2} = -2j $$
 Calculate the average power of the signal $w(t)$.
 
 ### Exercise 2.2 (Intermediate)
