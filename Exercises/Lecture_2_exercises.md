@@ -17,7 +17,9 @@ Calculate the average power of the signal $w(t) = 3\cos(2\pi \cdot 100t) + 4\sin
 
 ### Exercise 1.3 (Advanced)
 A periodic signal $w(t)$ has a period $T_0 = 2$ seconds. Over one period ($0 \le t < 2$), it is defined as:
+
 $$w(t) = \begin{cases} 2, & 0 \le t < 1 \\ -1, & 1 \le t < 2 \end{cases}$$
+
 Calculate the DC component and the average power of this signal.
 
 ---
@@ -31,17 +33,23 @@ b) What is the Power Spectral Density $\mathcal{P}_w(f)$?
 
 ### Exercise 2.2 (Intermediate)
 Determine the autocorrelation function $R_w(\tau)$ and the PSD $\mathcal{P}_w(f)$ for the signal:
+
 $$ w(t) = A\cos(\omega_0 t + \theta) $$
+
 where $\theta$ is a constant. 
 
 ### Exercise 2.3 (Advanced)
 A signal $w(t)$ has a Power Spectral Density given by:
+
 $$\mathcal{P}_w(f) = \begin{cases} N_0/2, & |f| \le B \\ 0, & |f| > B \end{cases}$$
+
 Determine the average power $P$ and the autocorrelation function $R_w(\tau)$.
 
 ### Exercise 2.4 (Advanced)
 Using the definition of PSD via the limit of a truncated waveform:
+
 $$ \mathcal{P}_w(f) = \lim_{T\rightarrow+\infty} \frac{1}{T}\vert W_T(f)\vert^2 $$
+
 where $w_T(t)$ is the waveform truncated to $[-T/2, T/2]$, calculate the Power Spectral Density of the signal $w(t) = A e^{j\omega_0 t}$.
 
 ---
