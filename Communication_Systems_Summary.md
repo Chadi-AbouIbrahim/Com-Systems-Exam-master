@@ -93,6 +93,55 @@ Implies: $|H(f)| = A$ (constant) and $\arg[H(f)] = -2\pi T_d f$ (linear phase)
 
 ---
 
+## Lecture 4 - Sampling Theorem
+
+### Key Formulas
+
+**Formula 1: Bandlimited waveform condition**
+$$W(f) = \mathcal{F}[w(t)] = 0 \text{ for } |f| \ge B$$
+
+**Formula 2: Time limited waveform condition**
+$$w(t) = 0 \text{ for } |t| > T$$
+
+**Formula 3: Parseval's theorem (general form)**
+$$\int_{-\infty}^{+\infty} w_1(t)w_2^*(t)dt = \int_{-\infty}^{+\infty} W_1(f)W_2^*(f)df$$
+
+**Formula 4: Sampling Theorem Representation**
+$$w(t) = \sum_{n=-\infty}^{+\infty} w\left(\frac{n}{f_s}\right) \text{sinc} \left\{ f_s \left[ t - \left(\frac{n}{f_s}\right) \right] \right\}$$
+for $f_s \ge 2B$.
+
+**Formula 5: Minimum Sampling Rate (Nyquist frequency)**
+$$f_s = 2B$$
+
+**Formula 6: Dimensionality Theorem**
+$$N = 2BT_0$$
+where $N$ is the number of dimensions required to specify a waveform over a $T_0$ interval.
+
+**Formula 7: Impulse Sampling**
+$$w_s(t) = w(t) \sum_{n \in \mathbb{Z}} \delta(t - nT_s) = \sum_{n \in \mathbb{Z}} w(nT_s) \delta(t - nT_s)$$
+where $T_s = 1/f_s$.
+
+**Formula 8: Spectrum of Impulse Sampled Signal**
+$$W_s(f) = \frac{1}{T_s} \sum_{n \in \mathbb{Z}} W(f - nf_s)$$
+
+**Formula 9: Equivalent Noise Bandwidth**
+$$B_{eq} = \frac{1}{|H(f_0)|^2} \int_0^{+\infty} |H(f)|^2 df$$
+where $f_0$ is the frequency where the magnitude spectrum is maximum.
+
+### Key Concepts
+
+- **Bandlimited vs Time limited:** An absolutely bandlimited waveform cannot be absolutely time limited, and vice versa.
+- **Sampling Theorem:** If a signal is absolutely bandlimited to $B$ Hz, it can be completely reconstructed from its samples if the sampling frequency $f_s \ge 2B$.
+- **Dimensionality Theorem:** A real waveform having an absolute bandwidth $B$ can be completely specified by $N = 2BT_0$ independent pieces of information over a $T_0$ interval (for large $BT_0$).
+- **Aliasing:** If $f_s < 2B$, the signal is undersampled and the replicas of $W(f)$ will overlap, resulting in aliasing and distortions.
+- **Prefiltering:** To reduce distortions when sampling at $f_s$, a lowpass prefilter with cutoff frequency $f_c = f_s/2$ can be used.
+- **Absolute Bandwidth:** The width $f_2 - f_1$ where the spectrum is zero outside $[f_1, f_2]$ along the positive frequency axis.
+- **Null-to-null Bandwidth:** The width from the maximum frequency $f_0$ to the first null in the magnitude spectrum.
+- **3-dB Bandwidth:** The width between frequencies where $|H(f)|^2$ drops to half its maximum value ($-3$ dB).
+- **Equivalent noise Bandwidth:** The width of a fictitious rectangular spectrum such that the power in that rectangular band equals the power of the actual spectrum at positive frequencies.
+
+---
+
 ## GROUP 1 - Foundations of Modulation
 
 ### Lecture 13
