@@ -18,7 +18,7 @@ $f_s = 2B = 2 \times 5 \text{ kHz} = 10 \text{ kHz}$.
 
 b) **Nyquist sampling interval:**
 The sampling interval $T_s$ is the inverse of the sampling frequency.
-$T_s = \frac{1}{f_s} = \frac{1}{10,000 \text{ Hz}} = 10^{-4} \text{ s} = 100 \text{ \mu s}$.
+$T_s = \frac{1}{f_s} = \frac{1}{10,000 \text{ Hz}} = 10^{-4} \text{ s} = 100 \mu\text{s}$.
 
 ---
 
