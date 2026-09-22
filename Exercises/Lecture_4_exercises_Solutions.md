@@ -58,6 +58,21 @@ This consists of replicas of the original baseband spectrum $W(f)$ shifted by in
 - Second replicas ($n=\pm 2$): centered at $\pm 20 \text{ kHz}$, extending from $16 \text{ kHz}$ to $24 \text{ kHz}$ (and negative).
 For $|f| \le 15 \text{ kHz}$, the spectrum consists of the baseband signal (up to $4 \text{ kHz}$) and the first replicas (from $6$ to $14 \text{ kHz}$). Because the baseband signal ends at $4 \text{ kHz}$ and the first replica starts at $6 \text{ kHz}$, there is a $2 \text{ kHz}$ guard band and no overlap (no aliasing).
 
+**Sketch:**
+```text
+       |W_s(f)|
+       |
+  1/Ts -|                 /\
+       |                /  \
+       |               /    \
+       |              /      \
+       |   /\        /        \        /\
+       |  /  \      /          \      /  \
+_______|_/____\____/____________\____/____\_______ f (kHz)
+       -14   -6  -4      0       4   6    14
+         n=-1           n=0          n=1
+```
+
 b) **Cutoff frequency $f_c$:**
 To perfectly reconstruct $w(t)$, an ideal low-pass filter must pass the entire baseband spectrum and reject all high-frequency replicas.
 - It must pass frequencies up to $B = 4 \text{ kHz}$, so $f_c \ge 4 \text{ kHz}$.
