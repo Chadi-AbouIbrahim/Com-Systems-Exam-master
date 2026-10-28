@@ -81,7 +81,7 @@ The baud rate **doubles** (factor $\frac{\log_2 16}{\log_2 4} = 2$), since each 
 **Solution:**
 
 a) **Detection formula:**
-$$w_k = \frac{1}{K_k} \int_0^{T_0} w(t)\varphi_k^*(t)\, dt \; ; \quad k = 1, \ldots, N$$
+$$w_k = \frac{1}{K_k} \int_0^{T_0} w(t)\varphi_k^{\ast}(t)\, dt \; ; \quad k = 1, \ldots, N$$
 where $K_k = \int_{-\infty}^{+\infty} |\varphi_k(t)|^2 dt$ is the energy of the $k$-th orthogonal function, $w(t)$ is the received waveform, and the $\varphi_k(t)$ are the known orthogonal functions used at the transmitter.
 
 b) This procedure is called **matched filter detection**.
@@ -100,7 +100,7 @@ a) **Constant $K_k$:**
 $K_k = \int_{-\infty}^{+\infty} |\varphi_k(t)|^2 dt = \int_{(k-1)T_s}^{kT_s} (1)^2 dt = T_s = 2 \text{ ms}$.
 
 b) **Integration (matched filter) result:**
-$\varphi_3(t) = 1$ only for $2T_s \le t < 3T_s$, and it is real ($\varphi_3^* = \varphi_3$):
+$\varphi_3(t) = 1$ only for $2T_s \le t < 3T_s$, and it is real ($\varphi_3^{\ast} = \varphi_3$):
 $$w_3 = \frac{1}{T_s} \int_{2T_s}^{3T_s} \left[1 + 0.2 \sin\left(\frac{2\pi t}{T_s}\right)\right] dt = \frac{1}{T_s}\left[T_s - \frac{0.2\, T_s}{2\pi}\left(\cos 6\pi - \cos 4\pi\right)\right] = 1 - 0 = 1$$
 The sinusoidal disturbance completes exactly one period over the symbol interval, so it integrates to zero and the correct value $w_3 = 1$ is obtained.
 
@@ -119,26 +119,66 @@ The **integration** (orthogonal series coefficient) method is more robust. It av
 
 **Solution:**
 
+We use $m$ and $n$ for the pulse indices, and $j$ only for the imaginary unit ($j^2 = -1$). All the functions are real, so no complex conjugate is needed in time.
+
 a) **Rectangular pulses:**
-$\varphi_k(t) = 1$ for $(k-1)T_s \le t < kT_s$ and $0$ elsewhere.
 
-- If $j \ne k$, the two pulses occupy **disjoint** time intervals, so $\varphi_j(t)\varphi_k(t) = 0$ for all $t$ and the integral is $0$.
-- If $j = k$: $\int_{(k-1)T_s}^{kT_s} (1)^2 dt = T_s$.
+The pulse $\varphi_k(t)$ equals $1$ for $(k-1)T_s \le t < kT_s$ and $0$ elsewhere.
 
-Therefore $\int \varphi_j(t)\varphi_k^*(t)\, dt = T_s\,\delta_{jk}$ ✓
+**Case $m \ne n$:** the two pulses occupy different (non-overlapping) time intervals, so their product is zero at every instant:
+
+$$\varphi_m(t)\,\varphi_n(t) = 0 \quad \Rightarrow \quad \int_{-\infty}^{+\infty} \varphi_m(t)\,\varphi_n(t)\, dt = 0$$
+
+**Case $m = n$:**
+
+$$\int_{-\infty}^{+\infty} \varphi_m(t)^2\, dt = \int_{(m-1)T_s}^{m T_s} 1 \, dt = T_s$$
+
+The rectangular pulses are therefore orthogonal. ✓
 
 b) **Sinc pulses:**
-Using the time-shift property, the Fourier transform of $\varphi_k(t)$ is:
-$$\Phi_k(f) = T_s \text{rect}(T_s f)\, e^{-j2\pi (k - \frac{1}{2}) T_s f}$$
-By Parseval's theorem:
-$$\int_{-\infty}^{+\infty} \varphi_j(t)\varphi_k^*(t)\, dt = \int_{-\infty}^{+\infty} \Phi_j(f)\Phi_k^*(f)\, df = T_s^2 \int_{-\frac{1}{2T_s}}^{+\frac{1}{2T_s}} e^{-j2\pi (j-k) T_s f}\, df$$
-Let $m = j - k$:
-- If $m = 0$: $T_s^2 \times \frac{1}{T_s} = T_s$.
-- If $m \ne 0$:
-$$T_s^2 \cdot \frac{\sin(\pi m)}{\pi m T_s} = T_s\, \text{sinc}(m) = 0 \quad \text{(since } m \text{ is a non-zero integer)}$$
 
-Therefore $\int \varphi_j(t)\varphi_k^*(t)\, dt = T_s\, \text{sinc}(j-k) = T_s\,\delta_{jk}$ ✓
-*(For $j = k$, this matches the value $K_k = T_s$ derived in the lecture.)*
+**Step 1 - Fourier transform of one pulse.**
+The Fourier transform of $\text{sinc}(t/T_s)$ is $T_s \, \text{rect}(T_s f)$. The pulse $\varphi_m(t)$ is this sinc delayed by $(m - \frac{1}{2})T_s$, so by the time-shift property:
+
+$$\Phi_m(f) = T_s \, \text{rect}(T_s f) \, e^{-j 2\pi (m - \frac{1}{2}) T_s f}$$
+
+**Step 2 - Parseval's theorem.**
+The integral in time equals the integral in frequency, where the second transform is conjugated (the conjugate only flips the sign of the exponent):
+
+$$\int_{-\infty}^{+\infty} \varphi_m(t)\,\varphi_n(t)\, dt = \int_{-\infty}^{+\infty} \Phi_m(f)\,\overline{\Phi_n(f)}\, df$$
+
+$$\overline{\Phi_n(f)} = T_s \, \text{rect}(T_s f) \, e^{+j 2\pi (n - \frac{1}{2}) T_s f}$$
+
+**Step 3 - Multiply the two transforms.**
+The two exponents combine (the $\frac{1}{2}$ terms cancel), and $\text{rect}^2 = \text{rect}$:
+
+$$\Phi_m(f)\,\overline{\Phi_n(f)} = T_s^2 \, \text{rect}(T_s f) \, e^{-j 2\pi (m - n) T_s f}$$
+
+Since $\text{rect}(T_s f) = 1$ only for $-\frac{1}{2T_s} < f < \frac{1}{2T_s}$, the integral becomes:
+
+$$\int_{-\infty}^{+\infty} \varphi_m(t)\,\varphi_n(t)\, dt = T_s^2 \int_{-1/(2T_s)}^{+1/(2T_s)} e^{-j 2\pi (m - n) T_s f} \, df$$
+
+**Step 4a - Case $m = n$.**
+The exponential equals $1$, and the integration interval has length $\frac{1}{T_s}$:
+
+$$T_s^2 \times \frac{1}{T_s} = T_s$$
+
+**Step 4b - Case $m \ne n$.**
+Let $p = m - n$, which is a non-zero integer. Integrating the exponential:
+
+$$\int_{-1/(2T_s)}^{+1/(2T_s)} e^{-j 2\pi p T_s f} \, df = \frac{e^{-j\pi p} - e^{+j\pi p}}{-j 2\pi p T_s} = \frac{-2j\sin(\pi p)}{-j 2\pi p T_s} = \frac{\sin(\pi p)}{\pi p T_s}$$
+
+Multiplying by $T_s^2$:
+
+$$T_s^2 \times \frac{\sin(\pi p)}{\pi p T_s} = T_s \, \frac{\sin(\pi p)}{\pi p} = T_s \, \text{sinc}(p)$$
+
+Since $p$ is a non-zero integer, $\sin(\pi p) = 0$, so the result is $0$.
+
+**Conclusion:**
+
+$$\int_{-\infty}^{+\infty} \varphi_m(t)\,\varphi_n(t)\, dt = \begin{cases} T_s & \text{if } m = n \\ 0 & \text{if } m \ne n \end{cases}$$
+
+The sinc pulses are therefore orthogonal. ✓ For $m = n$, this matches the value $K_k = T_s$ derived in the lecture.
 
 ---
 

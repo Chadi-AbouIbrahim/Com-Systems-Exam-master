@@ -57,12 +57,15 @@ d) Which method is more robust to this disturbance? Explain why.
 
 ### Exercise 2.3 (Advanced)
 
-Prove that the following sets of functions are orthogonal, i.e., that $\int_{-\infty}^{+\infty} \varphi_j(t)\varphi_k^*(t)\, dt = T_s\, \delta_{jk}$:
+Prove that the following sets of functions are orthogonal. Since the functions are real, this means showing that for any two integers $m$ and $n$:
+
+$$\int_{-\infty}^{+\infty} \varphi_m(t)\,\varphi_n(t)\, dt = \begin{cases} T_s & \text{if } m = n \\ 0 & \text{if } m \ne n \end{cases}$$
 
 a) Rectangular pulses: $\varphi_k(t) = \text{rect}\left(\frac{t - (k - \frac{1}{2})T_s}{T_s}\right)$
+
 b) Sinc pulses: $\varphi_k(t) = \text{sinc}\left(\frac{t - (k - \frac{1}{2})T_s}{T_s}\right)$
 
-*(Hint for b: use Parseval's theorem and the fact that the Fourier transform of $\text{sinc}(t/T_s)$ is $T_s \text{rect}(T_s f)$.)*
+Hint for b: use Parseval's theorem and the fact that the Fourier transform of $\text{sinc}(t/T_s)$ is $T_s \, \text{rect}(T_s f)$.
 
 ---
 
