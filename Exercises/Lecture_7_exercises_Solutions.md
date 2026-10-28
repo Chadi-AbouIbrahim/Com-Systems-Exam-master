@@ -104,8 +104,11 @@ $\varphi_3(t) = 1$ only for $2T_s \le t < 3T_s$, and it is real ($\varphi_3^* = 
 $$w_3 = \frac{1}{T_s} \int_{2T_s}^{3T_s} \left[1 + 0.2 \sin\left(\frac{2\pi t}{T_s}\right)\right] dt = \frac{1}{T_s}\left[T_s - \frac{0.2\, T_s}{2\pi}\left(\cos 6\pi - \cos 4\pi\right)\right] = 1 - 0 = 1$$
 The sinusoidal disturbance completes exactly one period over the symbol interval, so it integrates to zero and the correct value $w_3 = 1$ is obtained.
 
-c) **Sampling at $t = 2.25\,T_s$:**
-$$w(2.25\,T_s) = 1 + 0.2 \sin(2\pi \times 2.25) = 1 + 0.2 \sin(4.5\pi) = 1 + 0.2 \times 1 = 1.2$$
+c) **Detected value by sampling at $t = 2.25\,T_s$:**
+With sampling detection, the estimate of $w_3$ is simply the value of the received waveform at the sampling instant:
+$$\hat{w}_3 = w(2.25\,T_s) = 1 + 0.2 \sin(2\pi \times 2.25) = 1 + 0.2 \sin(4.5\pi) = 1 + 0.2 \times 1 = 1.2$$
+So the receiver detects $\hat{w}_3 = 1.2$ instead of the transmitted $w_3 = 1$.
+*(Without the disturbance, sampling and integration give the same result $w_3 = 1$ for rectangular pulses, which is why the lecture says they are equivalent. They differ only when the waveform is not constant over the symbol interval.)*
 
 d) **Comparison:**
 The **integration** (orthogonal series coefficient) method is more robust. It averages the received waveform over the whole symbol interval, so zero-mean disturbances are averaged out. Simple sampling only looks at one instant and picks up the full value of the disturbance at that instant (here a $20\%$ error).

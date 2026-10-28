@@ -52,7 +52,7 @@ a) Calculate $K_k$.
 b) During the third symbol interval ($2T_s \le t < 3T_s$), the transmitted value is $w_3 = 1$, but the received waveform is disturbed and equals:
 $$w(t) = 1 + 0.2 \sin\left(\frac{2\pi t}{T_s}\right)$$
 Compute $w_3$ using the orthogonal series coefficient (integration) formula.
-c) Compute the value obtained if, instead, the receiver simply samples the waveform at $t = 2.25\, T_s$.
+c) For rectangular pulses, the lecture states that detection can be done by sampling the waveform anywhere within the symbol interval. Compute the detected value $\hat{w}_3$ if, instead of integrating, the receiver estimates $w_3$ by sampling the received waveform at $t = 2.25\, T_s$.
 d) Which method is more robust to this disturbance? Explain why.
 
 ### Exercise 2.3 (Advanced)
