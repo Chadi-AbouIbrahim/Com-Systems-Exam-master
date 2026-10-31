@@ -81,7 +81,7 @@ c) **Relation:**
 The two sequences are the **complements** of each other: every bit of $11011000$ is inverted in $00100111$. Changing the reference bit is equivalent to inverting the whole encoded stream.
 
 d) **Same decoded bits:**
-The decoder only compares adjacent bits ($\tilde{d}_n = \tilde{e}_n \oplus \tilde{e}_{n-1}$). Inverting both bits of a pair does not change whether they are equal or different, so both sequences decode to $0110100$. This is exactly the same property that makes differential coding robust to polarity inversion.
+The decoder only compares adjacent bits ($\tilde d_n = \tilde e_n \oplus \tilde e_{n-1}$). Inverting both bits of a pair does not change whether they are equal or different, so both sequences decode to $0110100$. This is exactly the same property that makes differential coding robust to polarity inversion.
 
 ---
 
@@ -117,21 +117,21 @@ $e_n = e_0$ if the number of ones among $d_1, \ldots, d_n$ is **even**, and $e_n
 
 ### Solution 2.1 (Basic)
 
-**Given:** $\tilde{e}_n = 01101110$ (reference bit first), $\tilde{d}_n = \tilde{e}_n \oplus \tilde{e}_{n-1}$.
+**Given:** $\tilde e_n = 01101110$ (reference bit first), $\tilde d_n = \tilde e_n \oplus \tilde e_{n-1}$.
 
 **Solution:**
 
 a) **No inversion:**
 
-| Received sequence $\tilde{e}_n$ | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 0 |
+| Received sequence $\tilde e_n$ | 0 | 1 | 1 | 0 | 1 | 1 | 1 | 0 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Decoded sequence $\tilde{d}_n$ | | 1 | 0 | 1 | 1 | 0 | 0 | 1 |
+| Decoded sequence $\tilde d_n$ | | 1 | 0 | 1 | 1 | 0 | 0 | 1 |
 
 b) **With polarity inversion:**
 
-| Received sequence $\tilde{e}_n$ | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 |
+| Received sequence $\tilde e_n$ | 1 | 0 | 0 | 1 | 0 | 0 | 0 | 1 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Decoded sequence $\tilde{d}_n$ | | 1 | 0 | 1 | 1 | 0 | 0 | 1 |
+| Decoded sequence $\tilde d_n$ | | 1 | 0 | 1 | 1 | 0 | 0 | 1 |
 
 c) **Comparison:**
 In both cases, the decoded sequence is $1011001$, which is exactly the information sequence of Exercise 1.1. The polarity inversion has no effect on the decoded data.
@@ -147,27 +147,27 @@ In both cases, the decoded sequence is $1011001$, which is exactly the informati
 a) **Error on $e_4$:**
 The fifth bit changes from $1$ to $0$:
 
-| Received $\tilde{e}_n$ | 0 | 1 | 1 | 0 | **0** | 1 | 1 | 0 |
+| Received $\tilde e_n$ | 0 | 1 | 1 | 0 | **0** | 1 | 1 | 0 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Decoded $\tilde{d}_n$ | | 1 | 0 | 1 | **0** | **1** | 0 | 1 |
+| Decoded $\tilde d_n$ | | 1 | 0 | 1 | **0** | **1** | 0 | 1 |
 | Correct $d_n$ | | 1 | 0 | 1 | 1 | 0 | 0 | 1 |
 
-The decoded sequence is $1010101$. The bits $\tilde{d}_4$ and $\tilde{d}_5$ are wrong: **2 decoded errors**.
+The decoded sequence is $1010101$. The bits $\tilde d_4$ and $\tilde d_5$ are wrong: **2 decoded errors**.
 
 b) **Error on $e_7$:**
-The received sequence is $01101111$, which decodes to $1011000$. Only $\tilde{d}_7$ is wrong: **1 decoded error**.
+The received sequence is $01101111$, which decodes to $1011000$. Only $\tilde d_7$ is wrong: **1 decoded error**.
 
 c) **Error on $e_0$ (reference bit):**
-The received sequence is $11101110$, which decodes to $0011001$. Only $\tilde{d}_1$ is wrong: **1 decoded error**.
+The received sequence is $11101110$, which decodes to $0011001$. Only $\tilde d_1$ is wrong: **1 decoded error**.
 
 d) **General rule:**
-The received bit $\tilde{e}_k$ appears in **two** decoding equations:
+The received bit $\tilde e_k$ appears in **two** decoding equations:
 
-$\tilde{d}_k = \tilde{e}_k \oplus \tilde{e}_{k-1}$
+$\tilde d_k = \tilde e_k \oplus \tilde e_{k-1}$
 
-$\tilde{d}_{k+1} = \tilde{e}_{k+1} \oplus \tilde{e}_k$
+$\tilde d_{k+1} = \tilde e_{k+1} \oplus \tilde e_k$
 
-So a single error on $\tilde{e}_k$ corrupts **two** decoded bits, $\tilde{d}_k$ and $\tilde{d}_{k+1}$. The only exceptions are the reference bit (used only in $\tilde{d}_1$) and the last bit (used only in $\tilde{d}_N$), which cause one decoded error each.
+So a single error on $\tilde e_k$ corrupts **two** decoded bits, $\tilde d_k$ and $\tilde d_{k+1}$. The only exceptions are the reference bit (used only in $\tilde d_1$) and the last bit (used only in $\tilde d_N$), which cause one decoded error each.
 
 ---
 
@@ -187,28 +187,28 @@ a) **Truth table:**
 The last two columns are identical, so $\overline{a} \oplus \overline{b} = a \oplus b$. ✓
 
 b) **Full inversion:**
-If all received bits are inverted, then $\tilde{e}_n = \overline{e_n}$ and $\tilde{e}_{n-1} = \overline{e_{n-1}}$. Using the identity of part (a):
+If all received bits are inverted, then $\tilde e_n = \overline{e_n}$ and $\tilde e_{n-1} = \overline{e_{n-1}}$. Using the identity of part (a):
 
-$$\tilde{d}_n = \overline{e_n} \oplus \overline{e_{n-1}} = e_n \oplus e_{n-1} = (d_n \oplus e_{n-1}) \oplus e_{n-1} = d_n$$
+$$\tilde d_n = \overline{e_n} \oplus \overline{e_{n-1}} = e_n \oplus e_{n-1} = (d_n \oplus e_{n-1}) \oplus e_{n-1} = d_n$$
 
 The decoded bits are unchanged. ✓
 
 c) **Inversion starting at $e_4$:**
 The bits $e_4$ to $e_7$ ($1110$) are inverted to $0001$:
 
-| Received $\tilde{e}_n$ | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 1 |
+| Received $\tilde e_n$ | 0 | 1 | 1 | 0 | 0 | 0 | 0 | 1 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Decoded $\tilde{d}_n$ | | 1 | 0 | 1 | **0** | 0 | 0 | 1 |
+| Decoded $\tilde d_n$ | | 1 | 0 | 1 | **0** | 0 | 0 | 1 |
 | Correct $d_n$ | | 1 | 0 | 1 | 1 | 0 | 0 | 1 |
 
-The decoded sequence is $1010001$. Only **one** bit, $\tilde{d}_4$, is wrong.
+The decoded sequence is $1010001$. Only **one** bit, $\tilde d_4$, is wrong.
 
 d) **Explanation:**
-- For $n \le 3$, both bits are received correctly, so $\tilde{d}_n = d_n$.
-- For $n \ge 5$, **both** bits of the pair are inverted, so by the identity of part (a), $\tilde{d}_n = d_n$.
-- For $n = 4$, only $\tilde{e}_4$ is inverted, while $\tilde{e}_3$ is not:
+- For $n \le 3$, both bits are received correctly, so $\tilde d_n = d_n$.
+- For $n \ge 5$, **both** bits of the pair are inverted, so by the identity of part (a), $\tilde d_n = d_n$.
+- For $n = 4$, only $\tilde e_4$ is inverted, while $\tilde e_3$ is not:
 
-$$\tilde{d}_4 = \overline{e_4} \oplus e_3 = \overline{e_4 \oplus e_3} = \overline{d_4}$$
+$$\tilde d_4 = \overline{e_4} \oplus e_3 = \overline{e_4 \oplus e_3} = \overline{d_4}$$
 
 So a polarity inversion that starts in the middle of the transmission costs only **one** decoded bit, at the instant where the inversion begins.
 
@@ -402,7 +402,7 @@ a) **Error probability on the encoded bits:**
 $P \approx m P_e = 25 \times 2 \times 10^{-7} = 5 \times 10^{-6}$.
 
 b) **Effect of the inversion:**
-**No decoding errors.** The inversion affects all the bits that follow the inverting amplifier, so every received pair $(\tilde{e}_n, \tilde{e}_{n-1})$ is either fully inverted or not inverted at all. Since $\overline{a} \oplus \overline{b} = a \oplus b$, the differential decoder output is unchanged.
+**No decoding errors.** The inversion affects all the bits that follow the inverting amplifier, so every received pair $(\tilde e_n, \tilde e_{n-1})$ is either fully inverted or not inverted at all. Since $\overline{a} \oplus \overline{b} = a \oplus b$, the differential decoder output is unchanged.
 
 c) **Error probability on the decoded bits:**
 From Exercise 2.2, each isolated error on an encoded bit causes **two** errors on the decoded bits. When errors are rare, they are isolated, so the decoded bit error probability is approximately doubled:

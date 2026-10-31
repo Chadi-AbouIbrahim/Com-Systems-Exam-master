@@ -48,11 +48,11 @@ c) State a simple rule, based on the number of ones in $d_1, \ldots, d_n$, that 
 
 ### Exercise 2.1 (Basic)
 
-The decoding rule is $\tilde{d}_n = \tilde{e}_n \oplus \tilde{e}_{n-1}$.
+The decoding rule is $\tilde d_n = \tilde e_n \oplus \tilde e_{n-1}$.
 
-a) Decode the received sequence $\tilde{e}_n = 01101110$, where the first bit is the reference bit.
+a) Decode the received sequence $\tilde e_n = 01101110$, where the first bit is the reference bit.
 
-b) The same sequence is received with a polarity inversion, i.e., $\tilde{e}_n = 10010001$. Decode it.
+b) The same sequence is received with a polarity inversion, i.e., $\tilde e_n = 10010001$. Decode it.
 
 c) Compare both results with the information bits of Exercise 1.1.
 
@@ -66,7 +66,7 @@ b) Repeat part (a) if the error is on the last bit $e_7$ instead.
 
 c) Repeat part (a) if the error is on the reference bit $e_0$ instead.
 
-d) In general, how many decoded bits are affected by a single error on $\tilde{e}_k$? Explain using the decoding rule.
+d) In general, how many decoded bits are affected by a single error on $\tilde e_k$? Explain using the decoding rule.
 
 ### Exercise 2.3 (Advanced)
 
@@ -164,10 +164,10 @@ d) Use this closed form to verify the exact values of parts (a) and (b).
 
 A differentially encoded binary stream is transmitted over a line with $m = 25$ regenerative repeaters, each with $P_e = 2 \times 10^{-7}$. One of the repeaters contains an inverting amplifier, so the signal arrives at the receiver with inverted polarity.
 
-a) Compute the approximate probability of error $P$ on the received encoded bits $\tilde{e}_n$.
+a) Compute the approximate probability of error $P$ on the received encoded bits $\tilde e_n$.
 
 b) Does the polarity inversion cause any decoding errors? Justify.
 
-c) Using your result from Exercise 2.2, estimate the probability of error on the decoded information bits $\tilde{d}_n$, assuming errors are rare and isolated.
+c) Using your result from Exercise 2.2, estimate the probability of error on the decoded information bits $\tilde d_n$, assuming errors are rare and isolated.
 
 d) Differential coding roughly doubles the bit error probability. Why is it still used?
